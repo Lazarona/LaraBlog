@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id()->foreign('comments.user_id');
             $table->string('username', 50)->unique();
             $table->string('email', 100)->unique();
             $table->string('password', 100);
             $table->string('picture')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**

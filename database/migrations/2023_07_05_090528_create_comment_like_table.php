@@ -11,18 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
         Schema::create('comment_like', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('liked')->default(false);
             $table->bigInteger('comment_id');
-            $table->foreign('comment_id')->references('id')->on('comments');
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**

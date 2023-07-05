@@ -1,5 +1,11 @@
 <?php
 
+// Vous avez en charge de créer un mini site de blogging.-
+
+// Chaque utilisateur peut poster des messages (et des images).
+// Chaque utilisateur peut modifier/effacer ses messages.
+// Les utilisateurs ne peuvent pas modifier/effacer les messages d’un autre.
+// Les utilisateurs peuvent commenter les messages d’un autre.
 /*
 |--------------------------------------------------------------------------
 | Create The Application

@@ -73,9 +73,7 @@
                       <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a>
                         </div> 
                       @if ($post->user_id == Auth::id())
-                      <div class="d-flex justify-content-center">
-                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a>
-                    </div> 
+                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a> 
                       @endif
                       @endauth
                 </div>

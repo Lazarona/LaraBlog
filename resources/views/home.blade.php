@@ -19,7 +19,7 @@
             @if (Route::has('login'))
                 
                     @auth
-                    <a href="{{ url('/profile') }}" class="text-white text-decoration-none" >Profile</a>
+                    <a href="{{ route('profile.edit') }}" class="text-white text-decoration-none" >Profile</a>
                     @else
                     <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
 

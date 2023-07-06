@@ -34,17 +34,17 @@ class PostController extends Controller
             'content' => 'required|max:200',
         ]);
 
-        $content = $request->input('content');
-        $title = $request->input('title');
-        $user_id = Auth::user()->id;
+        $post = new Post;
 
-        Post::create(
-            $title,
-            $content,
-            $user_id
-        );
+        $post->content = $request->input('content');
+        $post->title = $request->input('title');
+        $post->user_id = Auth::user()->id;
 
-        return view('posts.store', compact('posts'));
+        $post->save();
+
+        return view('posts.store')->with([
+            'posts' => Post::all()
+        ]);
     }
 
     /**

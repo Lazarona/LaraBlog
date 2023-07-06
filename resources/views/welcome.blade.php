@@ -43,6 +43,10 @@
                     <input type="title" placeholder="Titre">
                     <textarea name="content" id="" cols="30" rows="10" placeholder="commenter.."></textarea>
                     <button type="submit">Envoyer</button>
+                    <form class="flex-col" action="{{route('destroy.store')}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="erase">Effacer</button>
                     </form>
             </div>
                 <div class="mt-16">

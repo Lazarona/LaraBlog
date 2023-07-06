@@ -10,16 +10,16 @@
 </head>
 <body  class="bg-dark" > 
 
-    <div class="d-flex justify-content-around  align-items-center " >
+    <div class="d-flex justify-content-around  align-items-center gap-60 " >
        
         
             <img src="../img/logolarablog2.png" alt="" style="width:30%">
        
-            <div class="">
+            <div>
             @if (Route::has('login'))
                 
                     @auth
-                    <a href="{{ url('/dashboard') }}" >Dashboard</a>
+                    <a href="{{ url('/profile') }}" class="text-white text-decoration-none" >Profil</a>
                     @else
                     <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
 
@@ -40,13 +40,12 @@
                 <div class="card-body " >
                     <form class="d-flex flex-column gap-3" action="{{route('posts.store')}}" method="POST" >
                         @csrf
-                        <input type="title" placeholder="Titre">
-                        <textarea name="content" id="" cols="17" rows="7" placeholder="commenter.."></textarea>
-                        <button type="submit" class="btn btn-secondary " style="">Envoyer</button>
+                        <input name="title" type="text" placeholder="Titre">
+                        <textarea name="content" id="" cols="17" rows="7" placeholder="Contenu"></textarea>
+                        <button type="submit" class="btn btn-secondary ">Envoyer</button>
                     </form>
                 </div>
             </div>
         </div>
-
 </body>
 </html>

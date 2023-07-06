@@ -13,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home')->with([
+            'posts' => Post::all()
+        ]);
     }
 
     /**

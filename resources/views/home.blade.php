@@ -30,23 +30,6 @@
                 </svg>
             </div>
 
-            <div>
-                <form action="{{route('posts.store')}}" method="POST">
-                @csrf
-                <input type="title" placeholder="Titre">
-                <textarea name="content" id="" cols="30" rows="10" placeholder="commenter.."></textarea>
-                <button type="submit">Envoyer</button>
-                </form>
-        </div>
-
-
-
-
-
-
-
-
-
 
 
 </body>

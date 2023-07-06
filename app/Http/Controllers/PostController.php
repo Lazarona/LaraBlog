@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -33,22 +33,15 @@ class PostController extends Controller
             'content' => 'required|max:200',
         ]);
 
-        $content = $request->input('content');
-        $title = $request->input('title');
+        if ($validated) {
+            $content = $request->input('content');
+            $title = $request->input('title');
 
-
-        // On enregistre dans la BDD
-
-        Post::create([
-            'content' => $content,
-            'title' => $title,
-
-        ]);
-
-        return view('posts.store')->with([
-            'content' => $request->content,
-            'title' => $request->title,
-        ]);
+            return view('posts.store')->with([
+                'content' => $request->content,
+                'title' => $request->title,
+            ]);
+        }
     }
 
     /**

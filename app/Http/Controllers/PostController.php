@@ -85,5 +85,9 @@ class PostController extends Controller
     {
         $post = Post::findOrfail($id);
         $post->delete();
+
+        return redirect()->back()
+            ->with('success', "Utilisateur supprimé
+avec succès");
     }
 }

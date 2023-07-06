@@ -33,16 +33,29 @@
         </div>
        
     </div>
+
+
+    
+       
+
     
         <div class="d-flex justify-content-center">
             <div class="card bg imageFond d-flex mb-3 align-items-center"  style="width: 18rem;">
                 <img src="../img/logo3.png" class="card-img-top" style="width:20%" alt="...">
                 <div class="card-body " >
+                    
                     <form class="d-flex flex-column gap-3" action="{{route('posts.store')}}" method="POST" >
                         @csrf
                         <input name="title" type="text" placeholder="Title">
                         <textarea name="content" id="" cols="17" rows="7" placeholder="Content"></textarea>
                         <button type="submit" class="btn btn-secondary ">Send</button>
+
+                        <form class="flex-col" action="{{route('destroy.store')}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="erase">Effacer</button>
+                            </form>
+                    </div>
                     </form>
                     @if ($errors->any())
                     @foreach ($errors->all() as $error)

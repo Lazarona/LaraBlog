@@ -66,16 +66,22 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Post $post, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:10',
+            'content' => 'required|max:200',
+        ]);
+
+        $post = Post::findOrFail($id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, $id)
     {
-        //
+        $post = Post::findOrfail($id);
+        $post->delete();
     }
 }

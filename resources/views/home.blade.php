@@ -65,10 +65,14 @@
                     <div class="card-body">
                       <h5 class="card-title">{{$post->title}}</h5>
                       <p class="card-text">{{$post->content}}</p>
-                      @auth
+                      @auth 
                       <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a> 
                       @if ($post->user_id == Auth::id())
-                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a> 
+                      <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-secondary ">Delete</button>
+                    </form>
                       @endif
                       @endauth
                 </div>

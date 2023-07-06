@@ -19,7 +19,9 @@
             @if (Route::has('login'))
                 
                     @auth
-                    <a href="{{ route('profile.edit') }}" class="text-white text-decoration-none" >Profile</a>
+                    <div class="card imageFond2 with-5S " >
+                        <a href="{{ route('profile.edit') }}" class="text-white text-decoration-none" >Profile</a>
+                    </div>
                     @else
                     <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
 
@@ -60,15 +62,20 @@
 
         <div class="d-flex flex-wrap gap-5">
             @foreach ($posts as $post)
-                <div class="card bg imageFond d-flex mb-3 align-items-center" style="width: 18rem;">
+                <div class="card imageFond2 " style="width: 18rem;">
                 {{-- <img src="..." class="card-img-top" alt="..."> --}}
                     <div class="card-body">
-                      <h5 class="card-title">{{$post->title}}</h5>
+                      <h5 class="card-title fs-2 text fw-bold text-center">{{$post->title}}</h5>
                       <p class="card-text">{{$post->content}}</p>
+                      
                       @auth
-                      <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a> 
+                      <div class="d-flex justify-content-center">
+                      <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a>
+                        </div> 
                       @if ($post->user_id == Auth::id())
-                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a> 
+                      <div class="d-flex justify-content-center">
+                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a>
+                    </div> 
                       @endif
                       @endauth
                 </div>

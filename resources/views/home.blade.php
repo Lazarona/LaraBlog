@@ -19,7 +19,7 @@
             @if (Route::has('login'))
                 
                     @auth
-                    <a href="{{ url('/profile') }}" class="text-white text-decoration-none" >Profile</a>
+                    <a href="{{ route('profile.edit') }}" class="text-white text-decoration-none" >Profile</a>
                     @else
                     <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
 
@@ -39,6 +39,8 @@
        
 
     
+    @auth
+        
         <div class="d-flex justify-content-center">
             <div class="card bg imageFond d-flex mb-3 align-items-center"  style="width: 18rem;">
                 <img src="../img/logo3.png" class="card-img-top" style="width:20%" alt="...">
@@ -63,7 +65,22 @@
                     @endforeach
                     @endif
                 </div>
-            </div>
+            </div>        
+        </div>
+
+        @endauth
+
+        <div class="d-flex flex-wrap gap-5">
+            @foreach ($posts as $post)
+                <div class="card bg imageFond d-flex mb-3 align-items-center" style="width: 18rem;">
+                {{-- <img src="..." class="card-img-top" alt="..."> --}}
+                    <div class="card-body">
+                      <h5 class="card-title">{{$post->title}}</h5>
+                      <p class="card-text">{{$post->content}}</p>
+                      <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a>
+                </div>
+              </div>
+            @endforeach
         </div>
 </body>
 </html>

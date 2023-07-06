@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -28,26 +29,21 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|max:10',
             'content' => 'required|max:200',
         ]);
 
-        $content = $request->input('content');
-        $title = $request->input('title');
+        $post = new Post;
 
+        $post->content = $request->input('content');
+        $post->title = $request->input('title');
+        $post->user_id = Auth::user()->id;
 
-        // On enregistre dans la BDD
-
-        Post::create([
-            'content' => $content,
-            'title' => $title,
-
-        ]);
+        $post->save();
 
         return view('posts.store')->with([
-            'content' => $request->content,
-            'title' => $request->title,
+            'posts' => Post::all()
         ]);
     }
 

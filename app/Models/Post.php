@@ -10,8 +10,11 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $post_content = [
+    public $timestamps = false;
+
+    protected $fillable = [
         'title',
-        'content'
+        'content',
+        'user_id'
     ];
 }

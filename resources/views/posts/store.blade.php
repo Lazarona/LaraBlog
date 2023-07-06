@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
-@slot('content')
+@section('content')
         <div>
-            <h3>{{$title}}</h3>
-            <p>{{$content}}</p>
+            @foreach ($posts as $post)
+                <h3>{{$post->title}}</h3>
+                <p>{{$post->content}}</p>
+            @endforeach
         </div>
-@endslot
+@endsection

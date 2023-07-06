@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -28,20 +29,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required|max:10',
             'content' => 'required|max:200',
         ]);
 
-        if ($validated) {
-            $content = $request->input('content');
-            $title = $request->input('title');
+        $content = $request->input('content');
+        $title = $request->input('title');
+        $user_id = Auth::user()->id;
 
-            return view('posts.store')->with([
-                'content' => $request->content,
-                'title' => $request->title,
-            ]);
-        }
+        Post::create(
+            $title,
+            $content,
+            $user_id
+        );
+
+        return view('posts.store', compact('posts'));
     }
 
     /**

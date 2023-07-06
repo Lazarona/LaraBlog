@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,8 @@ class PostController extends Controller
     public function index()
     {
         return view('home')->with([
-            'posts' => Post::all()
+            'posts' => Post::all(),
+            'users' => User::all()
         ]);
     }
 
@@ -44,7 +46,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return view('posts.store')->with([
+        return view('home')->with([
             'posts' => Post::all()
         ]);
     }
@@ -89,7 +91,6 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->back()
-            ->with('success', "Utilisateur supprimé
-avec succès");
+            ->with('success', "Post supprimé avec succès");
     }
 }

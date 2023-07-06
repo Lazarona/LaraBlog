@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('home');
     }
 
     /**
@@ -29,13 +29,10 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'require|max:10',
+            'title' => 'required|max:10',
             'content' => 'required|max:200',
-
-            'required',
-
-
         ]);
+
         $content = $request->input('content');
         $title = $request->input('title');
 

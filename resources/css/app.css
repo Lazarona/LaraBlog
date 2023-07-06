@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.imageFond{
+    background-image: url(https://us.123rf.com/450wm/attitude/attitude1703/attitude170300148/74892388-orange-and-pink-blurred-background-design-with-texture.jpg?ver=6);
+}

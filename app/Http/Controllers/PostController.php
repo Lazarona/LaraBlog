@@ -46,7 +46,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return view('posts.store')->with([
+        return view('home')->with([
             'posts' => Post::all()
         ]);
     }

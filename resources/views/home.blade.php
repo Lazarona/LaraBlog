@@ -19,7 +19,7 @@
             @if (Route::has('login'))
                 
                     @auth
-                    <a href="{{ url('/profile') }}" class="text-white text-decoration-none" >Profil</a>
+                    <a href="{{ url('/profile') }}" class="text-white text-decoration-none" >Profile</a>
                     @else
                     <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
 
@@ -40,10 +40,15 @@
                 <div class="card-body " >
                     <form class="d-flex flex-column gap-3" action="{{route('posts.store')}}" method="POST" >
                         @csrf
-                        <input name="title" type="text" placeholder="Titre">
-                        <textarea name="content" id="" cols="17" rows="7" placeholder="Contenu"></textarea>
-                        <button type="submit" class="btn btn-secondary ">Envoyer</button>
+                        <input name="title" type="text" placeholder="Title">
+                        <textarea name="content" id="" cols="17" rows="7" placeholder="Content"></textarea>
+                        <button type="submit" class="btn btn-secondary ">Send</button>
                     </form>
+                    @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                    <div>{{ $error }}</div>
+                    @endforeach
+                    @endif
                 </div>
             </div>
         </div>

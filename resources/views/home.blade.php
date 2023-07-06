@@ -10,7 +10,7 @@
 </head>
 <body  class="bg-dark" > 
 
-    <div class="d-flex justify-content-around  align-items-center " >
+    <div class="d-flex justify-content-around  align-items-center gap-60 " >
        
         
             <img src="../img/logolarablog2.png" alt="" style="width:30%">

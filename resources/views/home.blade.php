@@ -33,12 +33,6 @@
         </div>
        
     </div>
-
-
-    
-       
-
-    
     @auth
         
         <div class="d-flex justify-content-center">
@@ -51,12 +45,6 @@
                         <input name="title" type="text" placeholder="Title">
                         <textarea name="content" id="" cols="17" rows="7" placeholder="Content"></textarea>
                         <button type="submit" class="btn btn-secondary ">Send</button>
-
-                        <form class="flex-col" action="{{route('destroy.store')}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="erase">Effacer</button>
-                            </form>
                     </div>
                     </form>
                     @if ($errors->any())
@@ -79,6 +67,9 @@
                       <p class="card-text">{{$post->content}}</p>
                       @auth
                       <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a> 
+                      @if ($post->user_id == Auth::id())
+                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a> 
+                      @endif
                       @endauth
                 </div>
               </div>

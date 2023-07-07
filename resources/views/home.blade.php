@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Lara Blog</title>
 </head>
-<body  class="bg-dark" > 
+<body  class="bg-dark d-flex flex-wrap gap-8" > 
 
     <div class="d-flex justify-content-around  align-items-center gap-60 " >
        
@@ -23,10 +23,14 @@
                         <a href="{{ route('profile.edit') }}" class="text-dark text-decoration-none"  >Profile</a>
                     </button>
                     @else
-                    <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
+                    <button  type="button" class="profil btn imageFond2 " >
+                        <a href="{{ route('login') }}" class="text-primary text-decoration-none">Log in</a>
+                    </button>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="text-white text-decoration-none">Register</a>
+                    <button  type="button" class="profil btn imageFond2 " >
+                        <a href="{{ route('register') }}" class="text-primary text-decoration-none">Register</a>
+                    </button>
                     @endif
                     @endauth
                 
@@ -37,7 +41,7 @@
     </div>
     @auth
         
-        <div class="d-flex justify-content-center">
+        <div class="d-flex ">
             <div class="card bg imageFond d-flex mb-3 align-items-center"  style="width: 18rem;">
                 <img src="../img/logo3.png" class="card-img-top" style="width:20%" alt="...">
                 <div class="card-body " >
@@ -60,9 +64,12 @@
 
         @endauth
 
-        <div class="d-flex flex-wrap gap-5">
+        
+        <div class=" contenair d-flex flex-wrap gap-2">
+            
             @foreach ($posts as $post)
-                <div class="card imageFond2 " style="width: 18rem;">
+            
+                <div class="card imageFond2 d-flex gap-5" style="width: 18rem;">
                 {{-- <img src="..." class="card-img-top" alt="..."> --}}
                     <div class="card-body">
                       <h5 class="card-title fs-2 text fw-bold text-center">{{$post->title}}</h5>

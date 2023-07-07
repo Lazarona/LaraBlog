@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="d-flex flex-wrap gap-5 bg-dark ">
@@ -22,4 +22,4 @@
               
             @endforeach
         </div>
-@endsection
+@endsection --}}

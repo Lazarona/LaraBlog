@@ -73,6 +73,10 @@
                       <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a>
                          
                       @if ($post->user_id == Auth::id())
+                      <form action="{{ route('posts.edit', $post->id) }}" method="get">
+                        @csrf
+                        <input type="submit" class="btn btn-warning" value="Edit"/>
+                    </form>
                       <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                         @csrf
                         @method('delete')

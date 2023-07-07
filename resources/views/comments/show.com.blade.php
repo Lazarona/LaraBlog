@@ -9,7 +9,6 @@
         @csrf
         @method('put')
         <div class="card-body">
-          <h5 class="card-title">{{$comment->title}}</h5>
           <p class="card-text">{{$comment->content}}</p>
           <input type="show" placeholder="votre commentaire">
           <input type="submit" class="btn btn-warning" value="Comment">

@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class CommentController extends Controller
 {
@@ -11,7 +16,6 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -19,7 +23,15 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        $repost = [
+            'title' => 'required|max:10',
+            'content' => 'required|max:200',
+        ];
+
+
+        Comment::create($repost);
+
+        Comment::where('active', 1)->get();
     }
 
     /**
@@ -35,7 +47,11 @@ class CommentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        $comments = Comment::where('comment_id', '=', $id)->get();
+
+        return view('comment.show', compact('post', 'comments'));
     }
 
     /**
@@ -43,7 +59,9 @@ class CommentController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view('comments.edit')->with(['comment' => $comment]);
     }
 
     /**

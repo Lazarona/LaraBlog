@@ -76,7 +76,7 @@
                       <form action="{{ route('posts.destroy', $post->id) }}" method="post">
                         @csrf
                         @method('delete')
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <input type="submit" class="btn btn-danger" value="Delete"/>
                     </form>
                       @endif
                       @endauth

@@ -95,6 +95,9 @@ class PostController extends Controller
         $post = Post::findOrfail($id);
         $post->delete();
 
-        return redirect('posts.home');
+        return view('home')->with([
+            'posts' => Post::all(),
+            'users' => User::all()
+        ]);
     }
 }

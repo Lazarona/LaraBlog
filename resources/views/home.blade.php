@@ -19,9 +19,9 @@
             @if (Route::has('login'))
                 
                     @auth
-                    <div class="card imageFond2 with-5S " >
-                        <a href="{{ route('profile.edit') }}" class="text-white text-decoration-none" >Profile</a>
-                    </div>
+                    <button  type="button" class="profil btn imageFond2 " > 
+                        <a href="{{ route('profile.edit') }}" class="text-dark text-decoration-none"  >Profile</a>
+                    </button>
                     @else
                     <a href="{{ route('login') }}" class="text-white text-decoration-none">Log in</a>
 
@@ -69,13 +69,14 @@
                       <p class="card-text">{{$post->content}}</p>
                       
                       @auth
-                      <div class="d-flex justify-content-center">
+                      <div class="d-flex justify-content-center gap-3">
                       <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a>
-                        </div> 
+                         
                       @if ($post->user_id == Auth::id())
-                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a> 
+                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-danger">Delete</a> 
                       @endif
                       @endauth
+                    </div>
                 </div>
               </div>
             @endforeach

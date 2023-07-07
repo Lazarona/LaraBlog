@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -54,9 +55,13 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(String $id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        $comments = Comment::where('post_id', '=', $id)->get();
+
+        return view('posts.show', compact('post', 'comments'));
     }
 
     /**
@@ -70,7 +75,7 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => 'required|max:10',
@@ -83,12 +88,11 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post, $id)
+    public function destroy(String $id)
     {
         $post = Post::findOrfail($id);
         $post->delete();
 
-        return redirect()->back()
-            ->with('success', "Post supprimé avec succès");
+        return redirect('posts.home');
     }
 }

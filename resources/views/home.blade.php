@@ -73,7 +73,11 @@
                       <a href="{{route('posts.show', $post->id)}}" class="btn btn-secondary">Comment</a>
                         </div> 
                       @if ($post->user_id == Auth::id())
-                      <a href="{{route('posts.destroy', $post->id)}}" class="btn btn-secondary">Delete</a> 
+                      <form action="{{ route('posts.destroy', $post->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-secondary">Delete</button>
+                    </form>
                       @endif
                       @endauth
                 </div>

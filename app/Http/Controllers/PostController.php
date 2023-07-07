@@ -90,7 +90,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->save();
 
-        return view('home')->with([
+        return redirect(url('/posts'))->with([
             'posts' => Post::all(),
             'users' => User::all()
         ]);
@@ -104,7 +104,7 @@ class PostController extends Controller
         $post = Post::findOrfail($id);
         $post->delete();
 
-        return view('home')->with([
+        return redirect(url('/posts'))->with([
             'posts' => Post::all(),
             'users' => User::all()
         ]);

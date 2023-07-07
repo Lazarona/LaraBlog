@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Lara Blog</title>
 </head>
-<body  class="bg-dark d-flex flex-wrap gap-8" > 
+<body class="bg-dark d-flex justify-content-center flex-wrap gap-8" > 
 
     <div class="d-flex justify-content-around  align-items-center gap-60 " >
        
@@ -41,7 +41,7 @@
     </div>
     @auth
         
-        <div class="d-flex ">
+        <div class="d-flex">
             <div class="card bg imageFond d-flex mb-3 align-items-center"  style="width: 18rem;">
                 <img src="../img/logo3.png" class="card-img-top" style="width:20%" alt="...">
                 <div class="card-body " >
@@ -60,7 +60,6 @@
                     @endif
                 </div>
             </div>        
-        </div>
 
         @endauth
 

@@ -5,14 +5,20 @@
     
     <div class="card" style="width: 18rem;">
     {{-- <img src="..." class="card-img-top" alt="..."> --}}
-    <form action="{{ route('comments.create', $comment->id)}}" method="post">
+    <h5 class="card-title">{{$post->title}}</h5>
+    <p class="card-text">{{$post->content}}</p>
+    <form action="{{ route('commentaire.store', $post->id)}}" method="post">
+
         @csrf
-        @method('put')
         <div class="card-body">
-          <h5 class="card-title">{{$comment->title}}</h5>
-          <p class="card-text">{{$comment->content}}</p>
-          <input type="show" placeholder="votre commentaire">
+          <input type="text" name="content" placeholder="votre commentaire">
           <input type="submit" class="btn btn-warning" value="Comment">
     </form>
+    @foreach ($comments as $comment)
+    <div>
+        <p>{{$comment->content}}</p>
+        <i>{{$comment->user_id}}</i>
+    </div>
+    @endforeach
     </div>
 @endsection

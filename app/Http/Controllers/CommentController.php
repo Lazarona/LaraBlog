@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,22 +25,37 @@ class CommentController extends Controller
     public function create()
     {
         $repost = [
-            'title' => 'required|max:10',
             'content' => 'required|max:200',
         ];
 
 
         Comment::create($repost);
 
-        Comment::where('active', 1)->get();
+        // Comment::where('active', 1)->get();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, String $id)
     {
-        //
+
+        $request->validate([
+            'content' => 'required|max:200',
+        ]);
+
+        $comment = new Comment;
+
+        $comment->content = $request->input('content');
+        $comment->user_id = Auth::user()->id;
+        $comment->post_id = $id;
+        // dd($comment);
+        $comment->save();
+
+        return view('posts.show')->with([
+            'post' => Post::findOrFail($id),
+            'comments' => Comment::all()
+        ]);
     }
 
     /**
@@ -47,11 +63,6 @@ class CommentController extends Controller
      */
     public function show(string $id)
     {
-        $comment = Comment::findOrFail($id);
-
-        $comments = Comment::where('comment_id', '=', $id)->get();
-
-        return view('comment.show', compact('post', 'comments'));
     }
 
     /**

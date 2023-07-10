@@ -61,7 +61,10 @@ class PostController extends Controller
 
         $comments = Comment::where('post_id', '=', $id)->get();
 
-        return view('posts.show', compact('post', 'comments'));
+        return view('posts.show')->with([
+            'post' => $post,
+            'comments' => $comments
+        ]);
     }
 
     /**

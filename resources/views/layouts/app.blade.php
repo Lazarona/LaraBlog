@@ -16,7 +16,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class=" bg-dark font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-dark">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -29,8 +29,10 @@
             @endif
 
             <!-- Page Content -->
-            <main >
+            <main class=" bg-dark font-sans antialiased d-flex justify-content-center mt-5">
+           
                 @yield('content')
+               
             </main>
         </div>
     </body>

@@ -49,12 +49,14 @@ class CommentController extends Controller
         $comment->content = $request->input('content');
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $id;
-        // dd($comment);
         $comment->save();
+
+        $user = User::where('id', '=', $comment->user_id)->get();
 
         return view('posts.show')->with([
             'post' => Post::findOrFail($id),
-            'comments' => Comment::all()
+            'comments' => Comment::all(),
+            'user' => $user
         ]);
     }
 

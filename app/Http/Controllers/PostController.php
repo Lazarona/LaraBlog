@@ -15,9 +15,13 @@ class PostController extends Controller
      */
     public function index()
     {
+        // $users = User::where('id', '=', Post::all()->user_id)->get();
+
+        // dd($users);
+
         return view('home')->with([
             'posts' => Post::all(),
-            'users' => User::all()
+            // 'users' => $users
         ]);
     }
 
@@ -61,9 +65,12 @@ class PostController extends Controller
 
         $comments = Comment::where('post_id', '=', $id)->get();
 
+        $user = User::where('id', '=', Auth::user()->id)->get();
+
         return view('posts.show')->with([
             'post' => $post,
-            'comments' => $comments
+            'comments' => $comments,
+            'user' => $user
         ]);
     }
 

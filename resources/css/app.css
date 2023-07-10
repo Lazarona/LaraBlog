@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.imageFond{
+.imageFond {
     background-image: url(https://us.123rf.com/450wm/attitude/attitude1703/attitude170300148/74892388-orange-and-pink-blurred-background-design-with-texture.jpg?ver=6);
 }
 
-.imageFond2{
+.imageFond2 {
     background-image: url(https://us.123rf.com/450wm/attitude/attitude1703/attitude170300148/74892388-orange-and-pink-blurred-background-design-with-texture.jpg?ver=6);
-    background-position:100%;
+    background-position: 100%;
 }
 
+.imageFond3 {
+    background: linear-gradient(#f5ad79, #f5b588, #e2b0cd, #e196c2);
+}

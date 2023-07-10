@@ -17,7 +17,9 @@
     @foreach ($comments as $comment)
     <div>
         <p>{{$comment->content}}</p>
-        <i>{{$comment->user_id}}</i>
+        @foreach ($user as $u)
+        <i>{{$u->username}}</i>
+        @endforeach
     </div>
     @endforeach
     </div>

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id()->foreign('comments.user_id');
             $table->string('username', 50)->unique();
             $table->string('email', 100)->unique();
+            $table->timestamp('email_verified_at')->nullable();
+
             $table->string('password', 100);
             $table->string('picture')->nullable();
             $table->rememberToken();

@@ -11,3 +11,6 @@
     background-position:100%;
 }
 
+.imageFond3{
+    background: linear-gradient(#f6b773, #f5c491, hwb(333 73% 10%), hwb(332 65% 10%));
+}

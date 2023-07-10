@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => '12345678'
         ]);
-        Post::factory(6)->create();
+        Post::factory(10)->create();
         /* 
         $postItemsFactory = Post::factory(10)->hasPost(10)->create();
         // Attach Users and Categories together

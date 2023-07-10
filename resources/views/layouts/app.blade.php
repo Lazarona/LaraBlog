@@ -29,8 +29,10 @@
             @endif
 
             <!-- Page Content -->
-            <main class=" bg-dark font-sans antialiased">
+            <main class=" bg-dark font-sans antialiased d-flex justify-content-center mt-5">
+           
                 @yield('content')
+               
             </main>
         </div>
     </body>

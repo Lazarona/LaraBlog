@@ -23,13 +23,13 @@
                         <a href="{{ route('profile.edit') }}" class="text-dark text-decoration-none"  >Profile</a>
                     </button>
                     @else
-                    <button  type="button" class="profil btn imageFond2 " >
-                        <a href="{{ route('login') }}" class="text-primary text-decoration-none">Log in</a>
+                    <button  type="button" class="profil btn imageFond2 border border-light " >
+                        <a href="{{ route('login') }}" class="text-dark  text-decoration-none">Log in</a>
                     </button>
 
                     @if (Route::has('register'))
-                    <button  type="button" class="profil btn imageFond2 " >
-                        <a href="{{ route('register') }}" class="text-primary text-decoration-none">Register</a>
+                    <button  type="button" class="profil btn imageFond2 border border-light" >
+                        <a href="{{ route('register') }}" class="text-dark  text-decoration-none">Register</a>
                     </button>
                     @endif
                     @endauth
